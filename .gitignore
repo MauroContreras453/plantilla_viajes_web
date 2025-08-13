@@ -3,3 +3,4 @@ __pycache__/
 instance/
 .env
 *.sqlite3
+clave correo temporal

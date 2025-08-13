@@ -1,26 +1,21 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
+import sendgrid
+from sendgrid.helpers.mail import Mail, Email, To, Content
 
-# Cargar variables de entorno desde .env
+# Cargar variables de entorno
 load_dotenv()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
-# Configuración usando variables de entorno
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
+# Configuración SendGrid
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+FROM_EMAIL = os.environ.get('FROM_EMAIL')
+TO_EMAIL = os.environ.get('TO_EMAIL')
 
-# Inicializar Mail
-mail = Mail(app)
-
+sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
 
 @app.route("/")
 def index():
@@ -44,35 +39,37 @@ def contacto():
         nombre = request.form['nombre']
         email = request.form['email']
         mensaje = request.form['mensaje']
-        
-        # Crear el mensaje de email
+
         subject = f"Nuevo mensaje de contacto de {nombre}"
-        body = f"""
+        body_text = f"""
         Has recibido un nuevo mensaje desde tu sitio web:
-        
+
         Nombre: {nombre}
         Email: {email}
-        
+
         Mensaje:
         {mensaje}
         """
-        
+
         try:
-            # Crear y enviar el email
-            msg = Message(
-                subject=subject,
-                recipients=['mauro.contreraspalma@gmail.com'],  # Tu email donde recibes mensajes
-                body=body,
-                reply_to=email
-            )
-            
-            mail.send(msg)
+            # Crear y enviar email con SendGrid
+            from_email = Email(FROM_EMAIL)
+            to_email = To(TO_EMAIL)
+            content = Content("text/plain", body_text)
+            mail = Mail(from_email, to_email, subject, content)
+
+            # Configurar reply_to
+            mail.reply_to = Email(email)
+
+            sg.client.mail.send.post(request_body=mail.get())
+
             flash('¡Mensaje enviado correctamente! Te responderemos pronto.', 'success')
         except Exception as e:
+            print(f"Error al enviar email: {e}")
             flash('Error al enviar el mensaje. Inténtalo de nuevo.', 'error')
-        
+
         return redirect(url_for('contacto'))
-    
+
     return render_template("contacto.html", active_page="contacto")
 
 @app.route("/galeria")
