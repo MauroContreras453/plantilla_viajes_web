@@ -11,20 +11,15 @@ app = Flask(__name__)
 # Configuración usando variables de entorno
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
 
 # Inicializar Mail
 mail = Mail(app)
-
-# Debug: verificar configuración (solo en desarrollo)
-if app.config.get('DEBUG', True):
-    print(f"MAIL_USERNAME: {app.config.get('MAIL_USERNAME')}")
-    print(f"MAIL_PASSWORD configured: {'Yes' if app.config.get('MAIL_PASSWORD') else 'No'}")
-    print(f"SECRET_KEY configured: {'Yes' if app.config.get('SECRET_KEY') else 'No'}")
 
 
 @app.route("/")
@@ -70,11 +65,11 @@ def contacto():
                 body=body,
                 reply_to=email
             )
+            
             mail.send(msg)
             flash('¡Mensaje enviado correctamente! Te responderemos pronto.', 'success')
         except Exception as e:
             flash('Error al enviar el mensaje. Inténtalo de nuevo.', 'error')
-            print(f"Error: {e}")
         
         return redirect(url_for('contacto'))
     
