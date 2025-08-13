@@ -4,3 +4,8 @@ instance/
 .env
 *.sqlite3
 clave correo temporal
+test_*.py
+RENDER_CONFIG.txt
+app_backup.py
+app_secure.py
+

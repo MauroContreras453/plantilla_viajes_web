@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Página no encontrada - Viaja con Nosotros{% endblock %}
+
+{% block content %}
+<div class="container error-page">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="display-1">404</h1>
+            <h2>¡Oops! Página no encontrada</h2>
+            <p class="lead">La página que buscas no existe o ha sido movida.</p>
+            <p>Parece que te has perdido en tu viaje por nuestro sitio web. 🗺️</p>
+            <div class="mt-4">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">🏠 Volver al inicio</a>
+                <a href="{{ url_for('contacto') }}" class="btn btn-outline-secondary">📧 Contáctanos</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

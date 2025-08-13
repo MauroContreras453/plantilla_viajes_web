@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Error del servidor - Viaja con Nosotros{% endblock %}
+
+{% block content %}
+<div class="container error-page">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="display-1">500</h1>
+            <h2>Error interno del servidor</h2>
+            <p class="lead">Algo salió mal en nuestro servidor. 🔧</p>
+            <p>Nuestro equipo técnico ha sido notificado y está trabajando para solucionarlo lo antes posible.</p>
+            <div class="mt-4">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">🏠 Volver al inicio</a>
+                <a href="{{ url_for('contacto') }}" class="btn btn-outline-secondary">📧 Reportar problema</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
