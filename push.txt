@@ -1,4 +1,4 @@
 
 git add .
-git commit -m "Arreglo de ingresos por rol a las distintas paginas de Ginebra"
+git commit -m "Agregado a la barra de navegación Nuestra empresa"
 git push origin main

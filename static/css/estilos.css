@@ -13,6 +13,13 @@ main {
     padding-top: 80px;
 }
 
+/* Ajustes específicos para móviles */
+@media (max-width: 768px) {
+    main {
+        padding-top: 70px;
+    }
+}
+
 /* =======================
    NAVBAR
 ======================= */
@@ -23,6 +30,18 @@ main {
 .navbar-brand {
     font-weight: bold;
     font-size: 1.3rem;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.8rem 1rem;
+        text-align: center;
+    }
 }
 
 .nav-link {
@@ -95,6 +114,99 @@ section ul li:before {
 
 section ul li:last-child {
     border-bottom: none;
+}
+
+/* Clase específica para lista de valores */
+.valores-list {
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.valores-list li {
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+    font-weight: 500;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.valores-list li:before {
+    content: "✓ ";
+    color: #007bff;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.valores-list li:hover {
+    background-color: #e9ecef;
+}
+
+.valores-list li:last-child {
+    border-bottom: none;
+}
+
+/* =======================
+   RESPONSIVIDAD MÓVILES
+======================= */
+@media (max-width: 768px) {
+    /* Headers más pequeños en móviles */
+    header h1 {
+        font-size: 2rem !important;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    /* Espaciado reducido en móviles */
+    .my-4, .my-md-5 {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Botones más grandes en móviles */
+    .btn-lg {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+    
+    /* Texto más legible en móviles */
+    p, .fs-6 {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
+    
+    /* Lista de valores en móviles */
+    .valores-list {
+        max-width: 100%;
+    }
+    
+    .valores-list li {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Para pantallas muy pequeñas (iPhone SE, etc.) */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    header {
+        padding: 2rem 1rem !important;
+    }
+    
+    .btn-lg {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 /* =======================
@@ -210,5 +322,34 @@ footer p {
 .whatsapp-float::before {
     content: "📱";
     font-size: 30px;
+}
+
+/* WhatsApp responsive */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 26px;
+    }
+    
+    .whatsapp-float::before {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
+    
+    .whatsapp-float::before {
+        font-size: 24px;
+    }
 }
 
