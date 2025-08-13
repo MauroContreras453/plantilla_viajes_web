@@ -8,16 +8,40 @@ body {
     color: #333;
 }
 
-/* Ajuste para que el contenido no quede oculto tras navbar fija */
 main {
     padding-top: 80px;
 }
 
-/* Ajustes específicos para móviles */
-@media (max-width: 768px) {
-    main {
-        padding-top: 70px;
-    }
+section {
+    margin-bottom: 50px;
+}
+
+section h2 {
+    font-weight: bold;
+    color: #007bff;
+}
+
+section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+section ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+    font-weight: 500;
+}
+
+section ul li:before {
+    content: "✓ ";
+    color: #007bff;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+section ul li:last-child {
+    border-bottom: none;
 }
 
 /* =======================
@@ -30,18 +54,6 @@ main {
 .navbar-brand {
     font-weight: bold;
     font-size: 1.3rem;
-}
-
-/* Responsividad para móviles */
-@media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 1.1rem;
-    }
-    
-    .navbar-nav .nav-link {
-        padding: 0.8rem 1rem;
-        text-align: center;
-    }
 }
 
 .nav-link {
@@ -78,45 +90,8 @@ header p {
 }
 
 /* =======================
-   SECCIONES
-======================= */
-section {
-    margin-bottom: 50px;
-}
-
-section h2 {
-    font-weight: bold;
-    color: #007bff;
-}
-
-/* =======================
    PÁGINA NUESTRA EMPRESA
 ======================= */
-/* Estilos para listas de valores */
-section ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-section ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid #e9ecef;
-    color: #495057;
-    font-weight: 500;
-}
-
-section ul li:before {
-    content: "✓ ";
-    color: #007bff;
-    font-weight: bold;
-    margin-right: 8px;
-}
-
-section ul li:last-child {
-    border-bottom: none;
-}
-
-/* Clase específica para lista de valores */
 .valores-list {
     list-style-type: none;
     padding-left: 0;
@@ -151,93 +126,15 @@ section ul li:last-child {
 }
 
 /* =======================
-   RESPONSIVIDAD MÓVILES
+   IMÁGENES
 ======================= */
-@media (max-width: 768px) {
-    /* Headers más pequeños en móviles */
-    header h1 {
-        font-size: 2rem !important;
-    }
-    
-    header p {
-        font-size: 1rem;
-    }
-    
-    /* Espaciado reducido en móviles */
-    .my-4, .my-md-5 {
-        margin-top: 2rem !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    /* Botones más grandes en móviles */
-    .btn-lg {
-        padding: 12px 30px;
-        font-size: 1.1rem;
-    }
-    
-    /* Texto más legible en móviles */
-    p, .fs-6 {
-        font-size: 1rem !important;
-        line-height: 1.6;
-    }
-    
-    /* Lista de valores en móviles */
-    .valores-list {
-        max-width: 100%;
-    }
-    
-    .valores-list li {
-        padding: 15px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Para pantallas muy pequeñas (iPhone SE, etc.) */
-    .container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    header {
-        padding: 2rem 1rem !important;
-    }
-    
-    .btn-lg {
-        width: 100%;
-        max-width: 300px;
-    }
-}
-
-/* =======================
-   IMÁGENES UNIFORMES
-======================= */
-/* Imágenes en tarjetas de destinos */
-.card-img-top {
-    height: 200px !important;
-    width: 100% !important;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-}
-
-/* Imágenes en la página de inicio */
-.img-fluid {
-    width: 100% !important;
-    height: 200px !important;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* Sobreescribir cualquier clase que pueda afectar las imágenes */
-img.img-fluid.rounded {
-    height: 200px !important;
-    object-fit: cover !important;
-}
-
-/* Regla general para todas las imágenes de contenido */
+.card-img-top,
+.img-fluid,
+img.img-fluid.rounded,
 section img {
     height: 200px !important;
-    object-fit: cover !important;
+    width: 100% !important;
+    object-fit: cover;
     border-radius: 8px;
 }
 
@@ -258,7 +155,6 @@ section img {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Modal de imagen */
 .modal-content {
     background-color: transparent;
     border: none;
@@ -280,7 +176,7 @@ footer p {
 }
 
 /* =======================
-   BOTONES PERSONALIZADOS
+   BOTONES
 ======================= */
 .btn-primary {
     background-color: #007bff;
@@ -316,7 +212,6 @@ footer p {
     transform: scale(1.1);
     box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
     color: white;
-    text-decoration: none;
 }
 
 .whatsapp-float::before {
@@ -324,8 +219,35 @@ footer p {
     font-size: 30px;
 }
 
-/* WhatsApp responsive */
+/* =======================
+   RESPONSIVIDAD
+======================= */
 @media (max-width: 768px) {
+    main { padding-top: 70px; }
+    .navbar-brand { font-size: 1.1rem; }
+    .navbar-nav .nav-link {
+        padding: 0.8rem 1rem;
+        text-align: center;
+    }
+    header h1 { font-size: 2rem !important; }
+    header p { font-size: 1rem; }
+    .my-4, .my-md-5 {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+    .btn-lg {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+    p, .fs-6 {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
+    .valores-list { max-width: 100%; }
+    .valores-list li {
+        padding: 15px;
+        font-size: 1rem;
+    }
     .whatsapp-float {
         width: 55px;
         height: 55px;
@@ -333,13 +255,19 @@ footer p {
         right: 15px;
         font-size: 26px;
     }
-    
-    .whatsapp-float::before {
-        font-size: 26px;
-    }
+    .whatsapp-float::before { font-size: 26px; }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    header { padding: 2rem 1rem !important; }
+    .btn-lg {
+        width: 100%;
+        max-width: 300px;
+    }
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -347,9 +275,5 @@ footer p {
         right: 10px;
         font-size: 24px;
     }
-    
-    .whatsapp-float::before {
-        font-size: 24px;
-    }
+    .whatsapp-float::before { font-size: 24px; }
 }
-

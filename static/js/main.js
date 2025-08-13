@@ -17,28 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (formulario) {
         formulario.addEventListener("submit", (e) => {
-            e.preventDefault(); // Evita envío automático para validar primero
-
-            const nombre = formulario.querySelector('input[type="text"]').value.trim();
-            const correo = formulario.querySelector('input[type="email"]').value.trim();
-            const mensaje = formulario.querySelector('textarea').value.trim();
+            const nombre = formulario.querySelector('input[name="nombre"]').value.trim();
+            const correo = formulario.querySelector('input[name="email"]').value.trim();
+            const mensaje = formulario.querySelector('textarea[name="mensaje"]').value.trim();
 
             if (nombre.length < 3) {
+                e.preventDefault();
                 alert("Por favor ingresa un nombre válido (mínimo 3 caracteres).");
                 return;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+                e.preventDefault();
                 alert("Por favor ingresa un correo electrónico válido.");
                 return;
             }
             if (mensaje.length < 10) {
+                e.preventDefault();
                 alert("El mensaje debe tener al menos 10 caracteres.");
                 return;
             }
 
-            // Si pasa todas las validaciones
-            alert("¡Gracias por contactarnos! Te responderemos pronto.");
-            formulario.reset();
+            // Si pasa todas las validaciones, permite el envío normal del formulario
+            // No llamamos preventDefault() ni reset() para que Flask maneje el envío
         });
     }
 
@@ -52,57 +52,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    // Función genérica para manejar formularios con SweetAlert2
-    async function manejarFormulario(formularioId) {
-        const formulario = document.getElementById(formularioId);
-        if (!formulario) return;
-
-        formulario.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const formData = new FormData(formulario);
-
-            try {
-                const response = await fetch(formulario.action || window.location.pathname, {
-                    method: "POST",
-                    body: formData
-                });
-
-                if (response.ok) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Mensaje enviado!',
-                        text: 'Te responderemos pronto.',
-                        confirmButtonColor: '#007bff'
-                    });
-                    formulario.reset();
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo enviar el mensaje. Intenta nuevamente.',
-                        confirmButtonColor: '#dc3545'
-                    });
-                }
-            } catch (error) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un problema al enviar el mensaje.',
-                    confirmButtonColor: '#dc3545'
-                });
-            }
-        });
-    }
-
-    // Manejar el formulario de contacto general
-    manejarFormulario("form-contacto");
-
-    // Manejar el formulario de "Trabaja con nosotros"
-    manejarFormulario("form-contacto-empresa");
 });
 
