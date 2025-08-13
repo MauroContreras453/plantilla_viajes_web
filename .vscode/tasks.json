@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Ejecutar Flask App",
+			"type": "shell",
+			"command": "& \"C:/Users/z004epmb/Desktop/Proyectos Web y aplicativos/Plantilla_paginas_viajes/.venv/Scripts/python.exe\" app.py",
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

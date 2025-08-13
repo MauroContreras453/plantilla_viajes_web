@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Galería - Viaja con Nosotros{% endblock %}
+
+{% block content %}
+<header class="bg-light text-center p-5">
+    <h1>Galería de Viajes</h1>
+    <p>Fotos y videos que inspiran tus próximas aventuras</p>
+</header>
+
+<section class="container my-5">
+    <h2 class="mb-4 text-center">📷 Fotos</h2>
+    <div class="row g-3">
+        <div class="col-md-4 col-sm-6">
+            <img src="{{ url_for('static', filename='img/playa.jpg') }}" class="img-fluid rounded gallery-img" alt="Playa Caribe">
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <img src="{{ url_for('static', filename='img/montana.jpg') }}" class="img-fluid rounded gallery-img" alt="Montaña">
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <img src="{{ url_for('static', filename='img/ciudad.jpg') }}" class="img-fluid rounded gallery-img" alt="Ciudad Europa">
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalImagen" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0">
+        <img id="imagenModal" class="img-fluid w-100" alt="Vista ampliada">
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container my-5">
+    <h2 class="mb-4 text-center">🎥 Videos</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/rS4sKG-dH9E" title="Hola Escocia" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/uWsKIqzABK0" title="Hola Malasia" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

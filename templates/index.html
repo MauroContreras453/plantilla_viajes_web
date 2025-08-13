@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Viaja con Nosotros{% endblock %}
+
+{% block content %}
+<header class="bg-light text-center p-5">
+    <h1>Descubre el mundo con nosotros</h1>
+    <p>Explora, sueña y viaja. Tu próxima aventura empieza aquí.</p>
+    <a href="{{ url_for('destinos') }}" class="btn btn-primary btn-lg">Ver Destinos</a>
+</header>
+
+<section class="container my-5">
+    <h2 class="text-center mb-4">Destinos Destacados</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ url_for('static', filename='img/playa.jpg') }}" class="img-fluid rounded" alt="Playa">
+            <h4 class="mt-2">Playas del Caribe</h4>
+            <p>Disfruta de arenas blancas y aguas cristalinas.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ url_for('static', filename='img/montana.jpg') }}" class="img-fluid rounded" alt="Montaña">
+            <h4 class="mt-2">Aventura en la Montaña</h4>
+            <p>Senderismo, aire puro y vistas impresionantes.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ url_for('static', filename='img/ciudad.jpg') }}" class="img-fluid rounded" alt="Ciudad">
+            <h4 class="mt-2">Ciudades Mágicas</h4>
+            <p>Historia, cultura y gastronomía para recordar.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

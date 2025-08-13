@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Destinos - Viaja con Nosotros{% endblock %}
+
+{% block content %}
+<header class="bg-light text-center p-5">
+    <h1>Explora Nuestros Destinos</h1>
+    <p>El mundo te espera, elige tu próxima aventura</p>
+</header>
+
+<section class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='img/playa.jpg') }}" class="card-img-top" alt="Playa">
+                <div class="card-body">
+                    <h5 class="card-title">Caribe</h5>
+                    <p class="card-text">Playas paradisíacas, clima perfecto y gastronomía única.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='img/montana.jpg') }}" class="card-img-top" alt="Montaña">
+                <div class="card-body">
+                    <h5 class="card-title">Patagonia</h5>
+                    <p class="card-text">Aventura, glaciares y paisajes impresionantes en el fin del mundo.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='img/ciudad.jpg') }}" class="card-img-top" alt="Ciudad">
+                <div class="card-body">
+                    <h5 class="card-title">Europa</h5>
+                    <p class="card-text">Historia, arte y cultura en las ciudades más icónicas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
