@@ -53,3 +53,56 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Función genérica para manejar formularios con SweetAlert2
+    async function manejarFormulario(formularioId) {
+        const formulario = document.getElementById(formularioId);
+        if (!formulario) return;
+
+        formulario.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(formulario);
+
+            try {
+                const response = await fetch(formulario.action || window.location.pathname, {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Mensaje enviado!',
+                        text: 'Te responderemos pronto.',
+                        confirmButtonColor: '#007bff'
+                    });
+                    formulario.reset();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo enviar el mensaje. Intenta nuevamente.',
+                        confirmButtonColor: '#dc3545'
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al enviar el mensaje.',
+                    confirmButtonColor: '#dc3545'
+                });
+            }
+        });
+    }
+
+    // Manejar el formulario de contacto general
+    manejarFormulario("form-contacto");
+
+    // Manejar el formulario de "Trabaja con nosotros"
+    manejarFormulario("form-contacto-empresa");
+});
+

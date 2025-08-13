@@ -71,6 +71,33 @@ section h2 {
 }
 
 /* =======================
+   PÁGINA NUESTRA EMPRESA
+======================= */
+/* Estilos para listas de valores */
+section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+section ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+    font-weight: 500;
+}
+
+section ul li:before {
+    content: "✓ ";
+    color: #007bff;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+section ul li:last-child {
+    border-bottom: none;
+}
+
+/* =======================
    IMÁGENES UNIFORMES
 ======================= */
 /* Imágenes en tarjetas de destinos */

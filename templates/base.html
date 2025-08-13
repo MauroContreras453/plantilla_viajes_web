@@ -19,6 +19,7 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link {% if active_page == 'inicio' %}active{% endif %}" href="{{ url_for('index') }}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link {% if active_page == 'nuestra empresa' %}active{% endif %}" href="{{ url_for('nuestra_empresa') }}">Nuestra Empresa</a></li>
                 <li class="nav-item"><a class="nav-link {% if active_page == 'destinos' %}active{% endif %}" href="{{ url_for('destinos') }}">Destinos</a></li>
                 <li class="nav-item"><a class="nav-link {% if active_page == 'galeria' %}active{% endif %}" href="{{ url_for('galeria') }}">Galería</a></li>
                 <li class="nav-item"><a class="nav-link {% if active_page == 'consejos' %}active{% endif %}" href="{{ url_for('consejos') }}">Consejos</a></li>

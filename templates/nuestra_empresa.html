@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Nuestra Empresa - Viaja con Nosotros{% endblock %}
+
+{% block content %}
+<header class="bg-light text-center p-5">
+    <h1>Nuestra Empresa</h1>
+    <p>Conoce quiénes somos y cómo trabajamos para ofrecerte la mejor experiencia de viajes</p>
+</header>
+
+<section class="container my-5">
+    <h2>Descripción</h2>
+    <p>Somos una empresa dedicada a ofrecer experiencias de viaje únicas, combinando comodidad, seguridad y asesoría personalizada para cada uno de nuestros clientes.</p>
+</section>
+
+<section class="container my-5">
+    <h2>Visión</h2>
+    <p>Ser reconocidos como la empresa líder en turismo, ofreciendo experiencias inolvidables y fomentando el turismo responsable y sostenible.</p>
+</section>
+
+<section class="container my-5">
+    <h2>Misión</h2>
+    <p>Brindar un servicio de calidad, personalizado y confiable, facilitando el acceso a destinos turísticos alrededor del mundo y promoviendo la satisfacción total de nuestros clientes.</p>
+</section>
+
+<section class="container my-5">
+    <h2>Valores</h2>
+    <ul>
+        <li>Compromiso</li>
+        <li>Transparencia</li>
+        <li>Responsabilidad</li>
+        <li>Innovación</li>
+        <li>Trabajo en equipo</li>
+        <li>Calidad en el servicio</li>
+    </ul>
+</section>
+
+<section class="container my-5">
+    <h2>¿Quieres trabajar con nosotros?</h2>
+    <p>Si estás interesado en formar parte de nuestro equipo o tienes una propuesta de colaboración, nos encantaría conocerte.</p>
+    <div class="text-center mt-4">
+        <a href="{{ url_for('contacto') }}" class="btn btn-primary btn-lg">
+            Contáctanos
+        </a>
+    </div>
+</section>
+{% endblock %}

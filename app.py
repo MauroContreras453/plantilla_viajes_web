@@ -21,6 +21,10 @@ def destinos():
 def consejos():
     return render_template("consejos.html", active_page="consejos")
 
+@app.route("/nuestra_empresa")
+def nuestra_empresa():
+    return render_template("nuestra_empresa.html", active_page="nuestra empresa")
+
 @app.route("/contacto", methods=['GET', 'POST'])
 def contacto():
     if request.method == 'POST':
