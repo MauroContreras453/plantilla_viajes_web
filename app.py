@@ -44,7 +44,7 @@ def contacto():
             # Crear y enviar el email
             msg = Message(
                 subject=subject,
-                recipients=['mauro.contreraspalma@gmail.com'],
+                recipients=['ejemplo@gmail.com'],
                 body=body,
                 reply_to=email
             )
