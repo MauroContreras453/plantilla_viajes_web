@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde .env
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -15,6 +19,12 @@ app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
 
 # Inicializar Mail
 mail = Mail(app)
+
+# Debug: verificar configuración (solo en desarrollo)
+if app.config.get('DEBUG', True):
+    print(f"MAIL_USERNAME: {app.config.get('MAIL_USERNAME')}")
+    print(f"MAIL_PASSWORD configured: {'Yes' if app.config.get('MAIL_PASSWORD') else 'No'}")
+    print(f"SECRET_KEY configured: {'Yes' if app.config.get('SECRET_KEY') else 'No'}")
 
 
 @app.route("/")
@@ -56,7 +66,7 @@ def contacto():
             # Crear y enviar el email
             msg = Message(
                 subject=subject,
-                recipients=[os.environ.get('MAIL_USERNAME', 'correo@gmail.com')],
+                recipients=['mauro.contreraspalma@gmail.com'],  # Tu email donde recibes mensajes
                 body=body,
                 reply_to=email
             )
