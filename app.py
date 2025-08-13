@@ -4,14 +4,17 @@ import os
 
 app = Flask(__name__)
 
-
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+# Configuración usando variables de entorno
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
+
+# Inicializar Mail
+mail = Mail(app)
 
 
 @app.route("/")
@@ -53,7 +56,7 @@ def contacto():
             # Crear y enviar el email
             msg = Message(
                 subject=subject,
-                recipients=['ejemplo@gmail.com'],
+                recipients=[os.environ.get('MAIL_USERNAME', 'correo@gmail.com')],
                 body=body,
                 reply_to=email
             )
